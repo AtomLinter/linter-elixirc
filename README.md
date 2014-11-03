@@ -1,4 +1,4 @@
-# linter-elixir
+# linter-elixirc
 
 This linter plugin for [Linter](https://github.com/AtomLinter/Linter) provides an interface to elixirc. It will be used with files that have the "source.elixir" syntax.
 
