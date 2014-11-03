@@ -1,12 +1,14 @@
 {
   "name": "linter-elixirc",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "activationEvents": [],
   "linter-package": true,
   "main": "./lib/init",
   "description": "Bare Minimum Elixir lint package",
   "repository": "https://github.com/JonGretar/linter-elixirc",
   "license": "MIT",
-  "engines": { "atom": ">0.50.0" },
+  "engines": {
+    "atom": ">0.50.0"
+  },
   "dependencies": {}
 }
