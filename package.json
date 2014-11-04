@@ -5,7 +5,7 @@
   "linter-package": true,
   "main": "./lib/init",
   "description": "Bare Minimum Elixir lint package",
-  "repository": "https://github.com/JonGretar/linter-elixirc",
+  "repository": "https://github.com/AtomLinter/linter-elixirc",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
