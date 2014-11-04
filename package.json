@@ -1,6 +1,6 @@
 {
   "name": "linter-elixirc",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "activationEvents": [],
   "linter-package": true,
   "main": "./lib/init",
