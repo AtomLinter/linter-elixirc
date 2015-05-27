@@ -14,11 +14,12 @@ class LinterElixirc extends Linter
 
   constructor: (editor) ->
     super(editor)
-    atom.config.observe 'linter-elixirc.elixircExecutablePath', =>
+    @configSubscription = atom.config.observe 'linter-elixirc.elixircExecutablePath', =>
       @executablePath = atom.config.get 'linter-elixirc.elixircExecutablePath'
 
   destroy: ->
-    atom.config.unobserve 'linter-elixirc.elixircExecutablePath'
+    super
+    @configSubscription.dispose()
 
   lintFile: (filePath, callback) ->
     {command, args} = @getCmdAndArgs(filePath)
