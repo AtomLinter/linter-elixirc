@@ -1,6 +1,6 @@
 {
   "name": "linter-elixirc",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "linter-package": true,
   "main": "./lib/init",
   "description": "Bare Minimum Elixir lint package",
