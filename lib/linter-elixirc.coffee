@@ -35,7 +35,7 @@ class LinterElixirc extends Linter
       args.push(path)
 
     build_env = process.env["MIX_ENV"] || "dev"
-    process.env["ERL_LIBS"] = atom.project.path+"/_build/"+build_env+"/lib/"
+    process.env["ERL_LIBS"] = atom.project.getPath()+"/_build/"+build_env+"/lib/"
 
     # options for BufferedProcess, same syntax with child_process.spawn
     options = { cwd: @cwd }
