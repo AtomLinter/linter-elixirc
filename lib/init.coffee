@@ -30,7 +30,6 @@ module.exports =
           "--ignore-module-conflict", "--app", "mix", "--app", "ex_unit", "-o", os.tmpDir(),
           filePath
         ]
-        project_path = atom.project.getPaths()
         opts =
           cwd: filePathDir
         parse_row = (row) ->
