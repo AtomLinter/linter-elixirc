@@ -6,8 +6,8 @@ It will be used with files that have the "source.elixir" syntax (ie. `*.ex; *.ex
 There is a limitation with ElixirC that causes warnings not to be shown when there is a SyntaxError.
 
 ## Installation
-Plugin requires Linter package and it should install it itself.
-If it did not, please follow the instructions [here][linter].
+Plugin requires Linter package and it should install it by itself.
+If it did not, please follow Linter instructions [here][linter].
 
 ### Method 1: In console
 ```
@@ -22,6 +22,7 @@ $ apm install linter-elixirc
 ## Settings
 
 Plugin should work with default settings. If not:
+
 1. Edit > Preferences (Ctrl+,)
 2. Packages > Search "linter-elixirc" > Settings
 3. Elixirc path - use `which elixirc` to find path. ie. `/usr/local/bin/elixirc`
