@@ -5,9 +5,10 @@ module.exports =
     executablePath:
       type: 'string'
       title: 'Elixirc path'
-      default: '/usr/local/bin/elixirc'
+      default: 'elixirc'
 
   activate: ->
+    require('atom-package-deps').install('linter-elixirc')
     @subscriptions = new CompositeDisposable
     @subscriptions.add atom.config.observe 'linter-elixirc.executablePath',
       (executablePath) =>
@@ -32,9 +33,17 @@ module.exports =
         ]
         opts =
           cwd: filePathDir
-        parse_row = (row) ->
+          throwOnStdErr: false
+          stream: 'both'
+        parse_error = (row) ->
           return unless row.startsWith('** ')
-          re = /.*\((.*)\) ([^:]+):(\d+): (.*)[\n\r]?/
+          re = ///
+            .*
+            \((.*)\)  # 1 - (TypeOfError)
+            \ ([^:]+) # 2 - file name
+            :(\d+):   # 3 - line
+            \ (.*)    # 4 - message
+            ///
           re_result = re.exec(row)
           ret =
             #type: re_result[1]
@@ -42,8 +51,24 @@ module.exports =
             text: re_result[4]
             filePath: filePathDir + '/' + re_result[2]
             range: helpers.rangeFromLineNumber(textEditor, re_result[3] - 1)
+        parse_warning = (row) ->
+          re = ///
+            ([^:]*) # 1 - file name
+            :(\d+)  # 2 - line
+            :\ warning
+            :\ (.*) # 3 - message
+            ///
+          re_result = re.exec(row)
+          return unless re_result?
+          ret =
+            type: "Warning"
+            text: re_result[3]
+            filePath: filePathDir + '/' + re_result[1]
+            range: helpers.rangeFromLineNumber(textEditor, re_result[2] - 1)
         helpers.exec(@executablePath, elixirc_args, opts)
           .then (compile_result) ->
-            result_lines = compile_result.split("\n")
-            error_stack = (parse_row(line) for line in result_lines unless !result_lines?)
-            (error for error in error_stack when error?)
+            result_string = compile_result['stdout'] + "\n" + compile_result['stderr']
+            result_lines = result_string.split("\n")
+            error_stack = (parse_error(line) for line in result_lines unless !result_lines?)
+            warning_stack = (parse_warning(line) for line in result_lines unless !result_lines?)
+            (error for error in error_stack.concat(warning_stack) when error?)

@@ -16,7 +16,11 @@
       }
     }
   },
+  "package-deps": [
+    "linter"
+  ],
   "dependencies": {
-    "atom-linter": "^3.2.2"
+    "atom-linter": "^3.2.2",
+    "atom-package-deps": "^2.1.3"
   }
 }
