@@ -10,6 +10,11 @@ module.exports =
       type: 'string'
       title: 'Mix path'
       default: 'mix'
+    forceElixirc:
+      type: 'boolean'
+      title: 'Always use elixirc'
+      description: 'Activating this will force plugin to never use `mix compile` and always use `elixirc`.'
+      default: false
 
   activate: ->
     require('atom-package-deps').install('linter-elixirc')
@@ -20,6 +25,9 @@ module.exports =
     @subscriptions.add atom.config.observe 'linter-elixirc.mixPath',
       (mixPath) =>
         @mixPath = mixPath
+    @subscriptions.add atom.config.observe 'linter-elixirc.forceElixirc',
+      (forceElixirc) =>
+        @forceElixirc = forceElixirc
   deactivate: ->
     @subscriptions.dispose()
   provideLinter: ->
@@ -27,11 +35,15 @@ module.exports =
     os = require 'os'
     fs = require 'fs'
     path = require 'path'
-    project_path = ->
+    projectPath = ->
       atom.project.getPaths()[0]
-    is_mix_project = ->
-      fs.existsSync(project_path() + '/mix.exs')
-    parse_error = (row, textEditor) ->
+    isMixProject = ->
+      fs.existsSync(projectPath() + '/mix.exs')
+    isForcedElixirc = =>
+      @forceElixirc
+    isExsFile = (textEditor) ->
+      textEditor.getPath().endsWith('.exs')
+    parseError = (row, textEditor) ->
       return unless row.startsWith('** ')
       re = ///
         .*
@@ -40,65 +52,65 @@ module.exports =
         :(\d+):   # 3 - line
         \ (.*)    # 4 - message
         ///
-      re_result = re.exec(row)
-      return unless re_result?
+      reResult = re.exec(row)
+      return unless reResult?
       ret =
-        #type: re_result[1]
+        #type: reResult[1]
         type: "Error"
-        text: re_result[4]
-        filePath: project_path() + '/' + re_result[2]
-        range: helpers.rangeFromLineNumber(textEditor, re_result[3] - 1)
-    parse_warning = (row, textEditor) ->
+        text: reResult[4]
+        filePath: projectPath() + '/' + reResult[2]
+        range: helpers.rangeFromLineNumber(textEditor, reResult[3] - 1)
+    parseWarning = (row, textEditor) ->
       re = ///
         ([^:]*) # 1 - file name
         :(\d+)  # 2 - line
         :\ warning
         :\ (.*) # 3 - message
         ///
-      re_result = re.exec(row)
-      return unless re_result?
+      reResult = re.exec(row)
+      return unless reResult?
       ret =
         type: "Warning"
-        text: re_result[3]
-        filePath: project_path() + '/' + re_result[1]
-        range: helpers.rangeFromLineNumber(textEditor, re_result[2] - 1)
-    handle_result = (textEditor) ->
-      (compile_result) ->
-        result_string = compile_result['stdout'] + "\n" + compile_result['stderr']
-        result_lines = result_string.split("\n")
-        error_stack = (parse_error(line, textEditor) for line in result_lines unless !result_lines?)
-        warning_stack = (parse_warning(line, textEditor) for line in result_lines unless !result_lines?)
-        (error for error in error_stack.concat(warning_stack) when error?)
+        text: reResult[3]
+        filePath: projectPath() + '/' + reResult[1]
+        range: helpers.rangeFromLineNumber(textEditor, reResult[2] - 1)
+    handleResult = (textEditor) ->
+      (compileResult) ->
+        resultString = compileResult['stdout'] + "\n" + compileResult['stderr']
+        resultLines = resultString.split("\n")
+        errorStack = (parseError(line, textEditor) for line in resultLines unless !resultLines?)
+        warningStack = (parseWarning(line, textEditor) for line in resultLines unless !resultLines?)
+        (error for error in errorStack.concat(warningStack) when error?)
     getFilePathDir = (textEditor) ->
       filePath = textEditor.getPath()
       path.dirname(filePath)
     getOpts = ->
       opts =
-        cwd: project_path()
+        cwd: projectPath()
         throwOnStdErr: false
         stream: 'both'
+    getDepsPa = ->
+      fs.readdirSync(projectPath() + "/_build/dev/lib/").map (item) ->
+        "_build/dev/lib/" + item + "/ebin"
+    lintElixirc = (textEditor) =>
+      elixircArgs = [
+        "--ignore-module-conflict", "--app", "mix", "--app", "ex_unit", "-o", os.tmpDir(),
+      ]
+      elixircArgs.push "-pa", item for item in getDepsPa()
+      elixircArgs.push textEditor.getPath()
+      helpers.exec(@elixircPath, elixircArgs, getOpts())
+        .then(handleResult(textEditor))
+    lintMix = (textEditor) =>
+      helpers.exec(@mixPath, ['compile'], getOpts())
+        .then (handleResult(textEditor))
 
-    provider_for_elixirc =
+    provider =
       grammarScopes: ['source.elixir']
       scope: 'file'
       lintOnFly: false
-      name: 'Elixir-elixirc'
+      name: 'Elixir'
       lint: (textEditor) =>
-        elixirc_args = [
-          "--ignore-module-conflict", "--app", "mix", "--app", "ex_unit", "-o", os.tmpDir(),
-          getFilePathDir(textEditor)
-        ]
-        helpers.exec(@elixircPath, elixirc_args, getOpts())
-          .then(handle_result(textEditor))
-    provider_for_mix =
-      grammarScopes: ['source.elixir']
-      scope: 'file'
-      lintOnFly: false
-      name: 'Elixir-Mix'
-      lint: (textEditor) =>
-        helpers.exec(@mixPath, ['compile'], getOpts())
-          .then (handle_result(textEditor))
-    if is_mix_project()
-      provider_for_mix
-    else
-      provider_for_elixirc
+        if isForcedElixirc() or not isMixProject() or isExsFile(textEditor)
+          lintElixirc(textEditor)
+        else
+          lintMix(textEditor)
