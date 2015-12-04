@@ -39,6 +39,9 @@ module.exports =
       atom.project.getPaths()[0]
     isMixProject = ->
       fs.existsSync(projectPath() + '/mix.exs')
+    isTestFile = (textEditor) ->
+      relativePath = path.relative(projectPath(), textEditor.getPath())
+      relativePath.split(path.sep)[0] == 'test'
     isForcedElixirc = =>
       @forceElixirc
     isExsFile = (textEditor) ->
@@ -89,14 +92,16 @@ module.exports =
         cwd: projectPath()
         throwOnStdErr: false
         stream: 'both'
-    getDepsPa = ->
-      fs.readdirSync(projectPath() + "/_build/dev/lib/").map (item) ->
-        "_build/dev/lib/" + item + "/ebin"
+    getDepsPa = (textEditor) ->
+      env = if isTestFile(textEditor) then "test" else "dev"
+      buildDir = path.join("_build", env, "lib")
+      fs.readdirSync(path.join(projectPath(), buildDir)).map (item) ->
+        path.join(projectPath(), buildDir, item, "ebin")
     lintElixirc = (textEditor) =>
       elixircArgs = [
         "--ignore-module-conflict", "--app", "mix", "--app", "ex_unit", "-o", os.tmpDir(),
       ]
-      elixircArgs.push "-pa", item for item in getDepsPa()
+      elixircArgs.push "-pa", item for item in getDepsPa(textEditor)
       elixircArgs.push textEditor.getPath()
       helpers.exec(@elixircPath, elixircArgs, getOpts())
         .then(handleResult(textEditor))
