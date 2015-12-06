@@ -35,12 +35,16 @@ module.exports =
     os = require 'os'
     fs = require 'fs'
     path = require 'path'
-    projectPath = ->
-      atom.project.getPaths()[0]
-    isMixProject = ->
-      fs.existsSync(projectPath() + '/mix.exs')
+    projectPath = (textEditor) ->
+      editorPath = textEditor.getPath()
+      for projectPathCandidate in atom.project.getPaths()
+        if editorPath.indexOf(projectPathCandidate) == 0
+          return projectPathCandidate
+      null
+    isMixProject = (textEditor) ->
+      fs.existsSync(projectPath(textEditor) + '/mix.exs')
     isTestFile = (textEditor) ->
-      relativePath = path.relative(projectPath(), textEditor.getPath())
+      relativePath = path.relative(projectPath(textEditor), textEditor.getPath())
       relativePath.split(path.sep)[0] == 'test'
     isForcedElixirc = =>
       @forceElixirc
@@ -61,7 +65,7 @@ module.exports =
         #type: reResult[1]
         type: "Error"
         text: reResult[4]
-        filePath: projectPath() + '/' + reResult[2]
+        filePath: projectPath(textEditor) + '/' + reResult[2]
         range: helpers.rangeFromLineNumber(textEditor, reResult[3] - 1)
     parseWarning = (row, textEditor) ->
       re = ///
@@ -75,7 +79,7 @@ module.exports =
       ret =
         type: "Warning"
         text: reResult[3]
-        filePath: projectPath() + '/' + reResult[1]
+        filePath: projectPath(textEditor) + '/' + reResult[1]
         range: helpers.rangeFromLineNumber(textEditor, reResult[2] - 1)
     handleResult = (textEditor) ->
       (compileResult) ->
@@ -87,26 +91,26 @@ module.exports =
     getFilePathDir = (textEditor) ->
       filePath = textEditor.getPath()
       path.dirname(filePath)
-    getOpts = ->
+    getOpts = (textEditor) ->
       opts =
-        cwd: projectPath()
+        cwd: projectPath(textEditor)
         throwOnStdErr: false
         stream: 'both'
     getDepsPa = (textEditor) ->
       env = if isTestFile(textEditor) then "test" else "dev"
       buildDir = path.join("_build", env, "lib")
-      fs.readdirSync(path.join(projectPath(), buildDir)).map (item) ->
-        path.join(projectPath(), buildDir, item, "ebin")
+      fs.readdirSync(path.join(projectPath(textEditor), buildDir)).map (item) ->
+        path.join(projectPath(textEditor), buildDir, item, "ebin")
     lintElixirc = (textEditor) =>
       elixircArgs = [
         "--ignore-module-conflict", "--app", "mix", "--app", "ex_unit", "-o", os.tmpDir(),
       ]
       elixircArgs.push "-pa", item for item in getDepsPa(textEditor)
       elixircArgs.push textEditor.getPath()
-      helpers.exec(@elixircPath, elixircArgs, getOpts())
+      helpers.exec(@elixircPath, elixircArgs, getOpts(textEditor))
         .then(handleResult(textEditor))
     lintMix = (textEditor) =>
-      helpers.exec(@mixPath, ['compile'], getOpts())
+      helpers.exec(@mixPath, ['compile'], getOpts(textEditor))
         .then (handleResult(textEditor))
 
     provider =
@@ -115,7 +119,7 @@ module.exports =
       lintOnFly: false
       name: 'Elixir'
       lint: (textEditor) =>
-        if isForcedElixirc() or not isMixProject() or isExsFile(textEditor)
+        if isForcedElixirc() or not isMixProject(textEditor) or isExsFile(textEditor)
           lintElixirc(textEditor)
         else
           lintMix(textEditor)
