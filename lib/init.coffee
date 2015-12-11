@@ -17,7 +17,7 @@ module.exports =
       default: false
 
   activate: ->
-    require('atom-package-deps').install('linter-elixirc')
+    require('atom-package-deps').install()
     @subscriptions = new CompositeDisposable
     @subscriptions.add atom.config.observe 'linter-elixirc.elixircPath',
       (elixircPath) =>
