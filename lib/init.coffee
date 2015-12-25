@@ -99,8 +99,11 @@ module.exports =
     getDepsPa = (textEditor) ->
       env = if isTestFile(textEditor) then "test" else "dev"
       buildDir = path.join("_build", env, "lib")
-      fs.readdirSync(path.join(projectPath(textEditor), buildDir)).map (item) ->
-        path.join(projectPath(textEditor), buildDir, item, "ebin")
+      try
+        fs.readdirSync(path.join(projectPath(textEditor), buildDir)).map (item) ->
+          path.join(projectPath(textEditor), buildDir, item, "ebin")
+      catch e
+        []
     lintElixirc = (textEditor) =>
       elixircArgs = [
         "--ignore-module-conflict", "--app", "mix", "--app", "ex_unit", "-o", os.tmpDir(),
