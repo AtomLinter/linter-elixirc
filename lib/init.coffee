@@ -50,6 +50,13 @@ module.exports =
       @forceElixirc
     isExsFile = (textEditor) ->
       textEditor.getPath().endsWith('.exs')
+    isPhoenixProject = (textEditor) ->
+      mixLockPath = projectPath(textEditor) + '/mix.lock'
+      try
+        mixLockContent = fs.readFileSync mixLockPath, 'utf-8'
+        mixLockContent.indexOf('"phoenix"') > 0
+      catch
+        false
     parseError = (row, textEditor) ->
       return unless row.startsWith('** ')
       re = ///
@@ -122,7 +129,7 @@ module.exports =
       lintOnFly: false
       name: 'Elixir'
       lint: (textEditor) =>
-        if isForcedElixirc() or not isMixProject(textEditor) or isExsFile(textEditor)
+        if isForcedElixirc() or not isMixProject(textEditor) or isExsFile(textEditor) or isPhoenixProject(textEditor)
           lintElixirc(textEditor)
         else
           lintMix(textEditor)
