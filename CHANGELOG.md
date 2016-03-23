@@ -1,9 +1,50 @@
 # Change Log
 
-## [1.1.4](https://github.com/AtomLinter/linter-elixirc/tree/1.1.4) (2015-12-30)
-[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.3...1.1.4)
+## [v1.1.6](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.6) (2016-03-23)
+[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.5...v1.1.6)
+
+**Implemented enhancements:**
+
+- Use project.relativizePath [\#58](https://github.com/AtomLinter/linter-elixirc/pull/58) ([Arcanemagus](https://github.com/Arcanemagus))
+- atom-linter@4.6.1 untested ⚠️ [\#55](https://github.com/AtomLinter/linter-elixirc/pull/55) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update atom-package-deps to version 4.0.1 🚀 [\#51](https://github.com/AtomLinter/linter-elixirc/pull/51) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- atom-linter@4.5.0 untested ⚠️ [\#49](https://github.com/AtomLinter/linter-elixirc/pull/49) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- atom-package-deps@3.0.8 untested ⚠️ [\#47](https://github.com/AtomLinter/linter-elixirc/pull/47) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- atom-linter@4.4.0 untested ⚠️ [\#46](https://github.com/AtomLinter/linter-elixirc/pull/46) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- atom-linter@4.3.4 untested ⚠️ [\#44](https://github.com/AtomLinter/linter-elixirc/pull/44) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- atom-linter@4.3.3 untested ⚠️ [\#40](https://github.com/AtomLinter/linter-elixirc/pull/40) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
+**Fixed bugs:**
+
+- Re-work the regex [\#45](https://github.com/AtomLinter/linter-elixirc/pull/45) ([Arcanemagus](https://github.com/Arcanemagus))
+
+**Closed issues:**
+
+- Plug doesn't get discovered in the phoenix project [\#56](https://github.com/AtomLinter/linter-elixirc/issues/56)
+- Phoenix code\_reload does not work when using linter-elixirc [\#19](https://github.com/AtomLinter/linter-elixirc/issues/19)
+
+## [v1.1.5](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.5) (2016-01-13)
+[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.4...v1.1.5)
+
+**Implemented enhancements:**
+
+- atom-linter@4.3.1 untested ⚠️ [\#35](https://github.com/AtomLinter/linter-elixirc/pull/35) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Force EOL to be LF [\#34](https://github.com/AtomLinter/linter-elixirc/pull/34) ([Arcanemagus](https://github.com/Arcanemagus))
+- atom-linter@4.3.0 untested ⚠️ [\#33](https://github.com/AtomLinter/linter-elixirc/pull/33) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- atom-package-deps@3.0.7 untested ⚠️ [\#31](https://github.com/AtomLinter/linter-elixirc/pull/31) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
+**Closed issues:**
+
+- breaks inotify-tools in phoenix app on linux [\#32](https://github.com/AtomLinter/linter-elixirc/issues/32)
 
 **Merged pull requests:**
+
+- Force elixirc for Phoenix projects [\#38](https://github.com/AtomLinter/linter-elixirc/pull/38) ([tmikoss](https://github.com/tmikoss))
+
+## [v1.1.4](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.4) (2015-12-30)
+[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.3...v1.1.4)
+
+**Implemented enhancements:**
 
 - atom-linter@4.2.0 untested ⚠️ [\#30](https://github.com/AtomLinter/linter-elixirc/pull/30) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
 
@@ -13,9 +54,6 @@
 **Implemented enhancements:**
 
 - Enable linting files without having \_build directory [\#29](https://github.com/AtomLinter/linter-elixirc/pull/29) ([mupkoo](https://github.com/mupkoo))
-
-**Merged pull requests:**
-
 - Update all dependencies 🌴 [\#25](https://github.com/AtomLinter/linter-elixirc/pull/25) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
 
 ## [v1.1.2](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.2) (2015-12-07)
