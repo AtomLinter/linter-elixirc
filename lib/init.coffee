@@ -41,9 +41,9 @@ module.exports =
 
     projectPath = (textEditor) ->
       editorPath = textEditor.getPath()
-      for projectPathCandidate in atom.project.getPaths()
-        if editorPath.indexOf(projectPathCandidate) == 0
-          return projectPathCandidate
+      projPath = atom.project.relativizePath(editorPath)[0]
+      if projPath?
+        return projPath
       null
 
     isMixProject = (textEditor) ->
