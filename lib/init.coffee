@@ -76,20 +76,33 @@ module.exports =
     parseError = (toParse, textEditor) ->
       ret = []
       re = ///
-        \*\*.*
-        (\((.*)\)         # 1 - Full message + 2 - (TypeOfError)
-        \s(.+))           # 3 - Message
-        [\r\n]{1,2}(?:.+) # Internal elixir code
-        \s+(.+)           # 4 - File
-        :(\d+):           # 5 - Line
+        \*\*[\ ]+
+        \((\w+)\)                  # 1 - (TypeOfError)
+        [\ ](?: # Two message formats.... mode one
+          ([\w\ ]+)                # 2 - Message
+          [\r\n]{1,2}.+[\r\n]{1,2} # Internal elixir code
+          [\ ]+(.+)                # 3 - File
+          :(\d+):                  # 4 - Line
+        |      # Or... mode two
+          (.+)                     # 5 - File
+          :(\d+):                  # 6 - Line
+          [\ ](.+)                 # 7 - Message
+        )
         ///g
       reResult = re.exec(toParse)
       while reResult?
-        ret.push
-          type: "Error"
-          text: reResult[1]
-          filePath: path.join(projectPath(textEditor), reResult[4])
-          range: helpers.rangeFromLineNumber(textEditor, reResult[5] - 1)
+        if (reResult[2]?)
+          ret.push
+            type: "Error"
+            text: '(' + reResult[1] + ') ' + reResult[2]
+            filePath: path.join(projectPath(textEditor), reResult[3])
+            range: helpers.rangeFromLineNumber(textEditor, reResult[4] - 1)
+        else
+          ret.push
+            type: "Error"
+            text: '(' + reResult[1] + ') ' + reResult[7]
+            filePath: path.join(projectPath(textEditor), reResult[5])
+            range: helpers.rangeFromLineNumber(textEditor, reResult[6] - 1)
         reResult = re.exec(toParse)
       ret
 
