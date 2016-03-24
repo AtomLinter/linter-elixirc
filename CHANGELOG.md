@@ -1,5 +1,20 @@
 # Change Log
 
+## [v1.1.7](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.7) (2016-03-24)
+[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.6...v1.1.7)
+
+**Implemented enhancements:**
+
+- Install language-elixir automatically [\#41](https://github.com/AtomLinter/linter-elixirc/issues/41)
+- Add language-elixir to package-deps [\#59](https://github.com/AtomLinter/linter-elixirc/pull/59) ([Arcanemagus](https://github.com/Arcanemagus))
+
+**Fixed bugs:**
+
+- TypeError on Windows [\#53](https://github.com/AtomLinter/linter-elixirc/issues/53)
+- File assumed to be in current project [\#42](https://github.com/AtomLinter/linter-elixirc/issues/42)
+- Error: Line number \(19\) greater than maximum line \(17\) [\#36](https://github.com/AtomLinter/linter-elixirc/issues/36)
+- Handle both forms of error output [\#60](https://github.com/AtomLinter/linter-elixirc/pull/60) ([Arcanemagus](https://github.com/Arcanemagus))
+
 ## [v1.1.6](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.6) (2016-03-23)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.5...v1.1.6)
 
