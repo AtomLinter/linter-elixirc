@@ -1,5 +1,16 @@
 # Change Log
 
+## [v1.1.8](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.8) (2016-05-02)
+[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.7...v1.1.8)
+
+**Fixed bugs:**
+
+- Fix a bug in the warning regex [\#64](https://github.com/AtomLinter/linter-elixirc/pull/64) ([Arcanemagus](https://github.com/Arcanemagus))
+
+**Closed issues:**
+
+- Sometimes linter-elixirc shows error as project error even though it's in the current file [\#62](https://github.com/AtomLinter/linter-elixirc/issues/62)
+
 ## [v1.1.7](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.7) (2016-03-24)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.6...v1.1.7)
 
