@@ -109,7 +109,7 @@ module.exports =
     parseWarning = (toParse, textEditor) ->
       ret = []
       re = ///
-        ([^:]*) # 1 - File name
+        ([^:\n]*) # 1 - File name
         :(\d+)  # 2 - Line
         :\ warning
         :\ (.*) # 3 - Message
@@ -145,8 +145,9 @@ module.exports =
       env = if isTestFile(textEditor) then "test" else "dev"
       buildDir = path.join("_build", env, "lib")
       try
-        fs.readdirSync(path.join(projectPath(textEditor), buildDir)).map (item) ->
-          path.join(projectPath(textEditor), buildDir, item, "ebin")
+        fs.readdirSync(path.join(projectPath(textEditor), buildDir)).
+          map (item) ->
+            path.join(projectPath(textEditor), buildDir, item, "ebin")
       catch e
         []
 
