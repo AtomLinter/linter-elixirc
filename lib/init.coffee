@@ -140,6 +140,7 @@ module.exports =
         cwd: projectPath(textEditor)
         throwOnStdErr: false
         stream: 'both'
+        allowEmptyStderr: true
 
     getDepsPa = (textEditor) ->
       env = if isTestFile(textEditor) then "test" else "dev"
