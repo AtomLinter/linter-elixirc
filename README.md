@@ -33,12 +33,12 @@ Plugin should work with default settings. If not:
 
 2.  Packages > Search "linter-elixirc" > Settings
 
-3.  Elixirc path - use `which elixirc` to find path. ie.
+3.  `elixirc path` option - use `which elixirc` to find path. ie.
     `/usr/local/bin/elixirc`
 
-4.  Mix path - use `which mix` to find path. ie. `/usr/local/bin/mix`
+4.  `mix path` option - use `which mix` to find path. ie. `/usr/local/bin/mix`
 
-5.  Always use elixirc - leave it disabled, unless `mix compile` is too slow.
+5.  `always use elixirc` option - leave it disabled, unless `mix compile` is too slow.
 
 ## Usage
 

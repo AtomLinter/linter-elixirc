@@ -141,6 +141,7 @@ module.exports =
         throwOnStdErr: false
         stream: 'both'
         allowEmptyStderr: true
+        env: process.env
 
     getDepsPa = (textEditor) ->
       env = if isTestFile(textEditor) then "test" else "dev"
