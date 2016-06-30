@@ -1,15 +1,31 @@
 # Change Log
 
+## [v1.1.10](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.10) (2016-06-30)
+[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.9...v1.1.10)
+
+**Fixed bugs:**
+
+- Fallback to file directory [\#71](https://github.com/AtomLinter/linter-elixirc/pull/71) ([Arcanemagus](https://github.com/Arcanemagus))
+
+**Closed issues:**
+
+- Getting compilation lint warnings, but no style warnings? [\#70](https://github.com/AtomLinter/linter-elixirc/issues/70)
+- Linter is not showing compilation errors \(or warnings\) [\#67](https://github.com/AtomLinter/linter-elixirc/issues/67)
+
+## [v1.1.9](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.9) (2016-06-14)
+[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.8...v1.1.9)
+
+**Implemented enhancements:**
+
+- Update atom-linter to version 5.0.1 🚀 [\#66](https://github.com/AtomLinter/linter-elixirc/pull/66) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
 ## [v1.1.8](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.8) (2016-05-02)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.7...v1.1.8)
 
 **Fixed bugs:**
 
-- Fix a bug in the warning regex [\#64](https://github.com/AtomLinter/linter-elixirc/pull/64) ([Arcanemagus](https://github.com/Arcanemagus))
-
-**Closed issues:**
-
 - Sometimes linter-elixirc shows error as project error even though it's in the current file [\#62](https://github.com/AtomLinter/linter-elixirc/issues/62)
+- Fix a bug in the warning regex [\#64](https://github.com/AtomLinter/linter-elixirc/pull/64) ([Arcanemagus](https://github.com/Arcanemagus))
 
 ## [v1.1.7](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.7) (2016-03-24)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.6...v1.1.7)
