@@ -44,16 +44,14 @@ module.exports =
       projPath = atom.project.relativizePath(editorPath)[0]
       if projPath?
         return projPath
-      null
+      return path.dirname(editorPath)
 
     isMixProject = (textEditor) ->
       project = projectPath(textEditor)
-      return false if not project
       return fs.existsSync(path.join(project, 'mix.exs'))
 
     isTestFile = (textEditor) ->
       project = projectPath(textEditor)
-      return false if not project
       relativePath = path.relative(project, textEditor.getPath())
       relativePath.split(path.sep)[0] == 'test'
 
@@ -65,7 +63,6 @@ module.exports =
 
     isPhoenixProject = (textEditor) ->
       project = projectPath(textEditor)
-      return false if not project
       mixLockPath = path.join(project, 'mix.lock')
       try
         mixLockContent = fs.readFileSync mixLockPath, 'utf-8'
@@ -119,7 +116,7 @@ module.exports =
         ret.push
           type: "Warning"
           text: reResult[3]
-          filePath: projectPath(textEditor) + '/' + reResult[1]
+          filePath: path.join(projectPath(textEditor), reResult[1])
           range: helpers.rangeFromLineNumber(textEditor, reResult[2] - 1)
         reResult = re.exec(toParse)
       ret
@@ -130,10 +127,6 @@ module.exports =
         errorStack = parseError(resultString, textEditor)
         warningStack = parseWarning(resultString, textEditor)
         (error for error in errorStack.concat(warningStack) when error?)
-
-    getFilePathDir = (textEditor) ->
-      filePath = textEditor.getPath()
-      path.dirname(filePath)
 
     getOpts = (textEditor) ->
       opts =
