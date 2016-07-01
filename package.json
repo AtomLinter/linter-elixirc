@@ -21,7 +21,7 @@
     "language-elixir"
   ],
   "dependencies": {
-    "atom-linter": "^5.0.1",
+    "atom-linter": "^5.0.2",
     "atom-package-deps": "^4.0.1"
   }
 }
