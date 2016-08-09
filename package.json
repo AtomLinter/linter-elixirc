@@ -22,6 +22,6 @@
   ],
   "dependencies": {
     "atom-linter": "^5.0.1",
-    "atom-package-deps": "^4.0.1"
+    "atom-package-deps": "^4.1.0"
   }
 }
