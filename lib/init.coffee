@@ -124,9 +124,12 @@ module.exports =
     handleResult = (textEditor) ->
       (compileResult) ->
         resultString = compileResult['stdout'] + "\n" + compileResult['stderr']
-        errorStack = parseError(resultString, textEditor)
-        warningStack = parseWarning(resultString, textEditor)
-        (error for error in errorStack.concat(warningStack) when error?)
+        try
+          errorStack = parseError(resultString, textEditor)
+          warningStack = parseWarning(resultString, textEditor)
+          (error for error in errorStack.concat(warningStack) when error?)
+        catch Error
+          [] # error in different file, just suppress
 
     getOpts = (textEditor) ->
       opts =
