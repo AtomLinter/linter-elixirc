@@ -106,18 +106,16 @@ module.exports =
     parseWarning = (toParse, textEditor) ->
       ret = []
       re = ///
-        ([^:\n]*) # 1 - File name
-        :(\d+)  # 2 - Line
-        :\ warning
-        :\ (.*) # 3 - Message
+        warning:\ (.*)\n # warning
+        \ \ (.*):([0-9]+) # file and file number
         ///g
       reResult = re.exec(toParse)
       while reResult?
         ret.push
           type: "Warning"
-          text: reResult[3]
-          filePath: path.join(projectPath(textEditor), reResult[1])
-          range: helpers.rangeFromLineNumber(textEditor, reResult[2] - 1)
+          text: reResult[1]
+          filePath: path.join(projectPath(textEditor), reResult[2])
+          range: helpers.rangeFromLineNumber(textEditor, reResult[3] - 1)
         reResult = re.exec(toParse)
       ret
 
