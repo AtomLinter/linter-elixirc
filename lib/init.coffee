@@ -1,4 +1,4 @@
-{BufferedProcess, CompositeDisposable} = require 'atom'
+{BufferedProcess, CompositeDisposable, Range} = require 'atom'
 
 module.exports =
   config:
@@ -103,21 +103,64 @@ module.exports =
         reResult = re.exec(toParse)
       ret
 
+    # only elixir 1.3+
     parseWarning = (toParse, textEditor) ->
+      console.log('to parse', toParse)
+
       ret = []
       re = ///
         warning:\ (.*)\n # warning
         \ \ (.*):([0-9]+) # file and file number
         ///g
       reResult = re.exec(toParse)
+
       while reResult?
-        ret.push
-          type: "Warning"
-          text: reResult[1]
-          filePath: path.join(projectPath(textEditor), reResult[2])
-          range: helpers.rangeFromLineNumber(textEditor, reResult[3] - 1)
+        console.log(reResult)
+        try
+          ret.push
+            type: "Warning"
+            text: reResult[1]
+            filePath: path.join(projectPath(textEditor), reResult[2])
+            # use range, this because the previous method of getting a range
+            # used the current buffer that is open in the texteditor, and it
+            # blows up if the line number is larger than the current file
+            # if the compiler returned warnings or errors of other files,
+            # it would thus frequently blow up and return no errors/warnings
+            # at all
+            range: new Range(
+              [reResult[3] - 1, 0],
+              [reResult[3] - 1, 0]
+            )
+        catch Error
+          console.log("Elixir Linter Error", Error)
         reResult = re.exec(toParse)
       ret
+
+    # parses warning for elixir 1.2 and below
+    parseLegacyWarning = (toParse, textEditor) ->
+      ret = []
+      re = ///
+        ([^:\n]*) # 1 - File name
+        :(\d+)  # 2 - Line
+        :\ warning
+        :\ (.*) # 3 - Message
+        ///g
+      reResult = re.exec(toParse)
+      while reResult?
+        try
+          ret.push
+            type: "Warning"
+            text: reResult[3]
+            filePath: path.join(projectPath(textEditor), reResult[1])
+            range: new Range(
+              [reResult[3] - 1, 0],
+              [reResult[3] - 1, 0]
+            )
+        catch Error
+          console.log("Elixir Linter Error", Error)
+        reResult = re.exec(toParse)
+      ret
+
 
     handleResult = (textEditor) ->
       (compileResult) ->
@@ -125,8 +168,10 @@ module.exports =
         try
           errorStack = parseError(resultString, textEditor)
           warningStack = parseWarning(resultString, textEditor)
+          legacyWarningStack = parseLegacyWarning(resultString, textEditor)
           (error for error in errorStack.concat(warningStack) when error?)
         catch Error
+          console.log(Error, "oops caught error....")
           [] # error in different file, just suppress
 
     getOpts = (textEditor) ->
@@ -156,6 +201,7 @@ module.exports =
       ]
       elixircArgs.push "-pa", item for item in getDepsPa(textEditor)
       elixircArgs.push textEditor.getPath()
+
       helpers.exec(@elixircPath, elixircArgs, getOpts(textEditor))
         .then(handleResult(textEditor))
 
