@@ -1,5 +1,23 @@
 # Change Log
 
+## [v1.2.0](https://github.com/AtomLinter/linter-elixirc/tree/v1.2.0) (2017-02-22)
+[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.11...v1.2.0)
+
+**Implemented enhancements:**
+
+- Implement specs [\#39](https://github.com/AtomLinter/linter-elixirc/issues/39)
+- Cleanup and bugfixes [\#82](https://github.com/AtomLinter/linter-elixirc/pull/82) ([Arcanemagus](https://github.com/Arcanemagus))
+- Update atom-linter to the latest version 🚀 [\#81](https://github.com/AtomLinter/linter-elixirc/pull/81) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+
+**Fixed bugs:**
+
+- Line number greater than maximum line [\#76](https://github.com/AtomLinter/linter-elixirc/issues/76)
+- Error: Line number greater than maximum line [\#63](https://github.com/AtomLinter/linter-elixirc/issues/63)
+- Linter errors link to wrong file location when in an umbrella application [\#21](https://github.com/AtomLinter/linter-elixirc/issues/21)
+- Linting only works for first added project. [\#20](https://github.com/AtomLinter/linter-elixirc/issues/20)
+- Cleanup and bugfixes [\#82](https://github.com/AtomLinter/linter-elixirc/pull/82) ([Arcanemagus](https://github.com/Arcanemagus))
+- Fix new warning messages with Elixir 1.3 [\#79](https://github.com/AtomLinter/linter-elixirc/pull/79) ([jfrolich](https://github.com/jfrolich))
+
 ## [v1.1.11](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.11) (2016-09-06)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.10...v1.1.11)
 
