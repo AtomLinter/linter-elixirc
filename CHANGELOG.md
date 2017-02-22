@@ -1,16 +1,18 @@
 # Change Log
 
+## [v1.1.11](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.11) (2016-09-06)
+[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.10...v1.1.11)
+
+**Implemented enhancements:**
+
+- Update atom-linter to version 8.0.0 🚀 [\#77](https://github.com/AtomLinter/linter-elixirc/pull/77) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
 ## [v1.1.10](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.10) (2016-06-30)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.9...v1.1.10)
 
 **Fixed bugs:**
 
 - Fallback to file directory [\#71](https://github.com/AtomLinter/linter-elixirc/pull/71) ([Arcanemagus](https://github.com/Arcanemagus))
-
-**Closed issues:**
-
-- Getting compilation lint warnings, but no style warnings? [\#70](https://github.com/AtomLinter/linter-elixirc/issues/70)
-- Linter is not showing compilation errors \(or warnings\) [\#67](https://github.com/AtomLinter/linter-elixirc/issues/67)
 
 ## [v1.1.9](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.9) (2016-06-14)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.8...v1.1.9)
@@ -58,12 +60,8 @@
 
 **Fixed bugs:**
 
-- Re-work the regex [\#45](https://github.com/AtomLinter/linter-elixirc/pull/45) ([Arcanemagus](https://github.com/Arcanemagus))
-
-**Closed issues:**
-
-- Plug doesn't get discovered in the phoenix project [\#56](https://github.com/AtomLinter/linter-elixirc/issues/56)
 - Phoenix code\_reload does not work when using linter-elixirc [\#19](https://github.com/AtomLinter/linter-elixirc/issues/19)
+- Re-work the regex [\#45](https://github.com/AtomLinter/linter-elixirc/pull/45) ([Arcanemagus](https://github.com/Arcanemagus))
 
 ## [v1.1.5](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.5) (2016-01-13)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.4...v1.1.5)
@@ -75,11 +73,7 @@
 - atom-linter@4.3.0 untested ⚠️ [\#33](https://github.com/AtomLinter/linter-elixirc/pull/33) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
 - atom-package-deps@3.0.7 untested ⚠️ [\#31](https://github.com/AtomLinter/linter-elixirc/pull/31) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
 
-**Closed issues:**
-
-- breaks inotify-tools in phoenix app on linux [\#32](https://github.com/AtomLinter/linter-elixirc/issues/32)
-
-**Merged pull requests:**
+**Fixed bugs:**
 
 - Force elixirc for Phoenix projects [\#38](https://github.com/AtomLinter/linter-elixirc/pull/38) ([tmikoss](https://github.com/tmikoss))
 
@@ -105,60 +99,53 @@
 
 - Detecting current project path correctly. Fixed \#23. [\#24](https://github.com/AtomLinter/linter-elixirc/pull/24) ([antage](https://github.com/antage))
 
-**Closed issues:**
+**Fixed bugs:**
 
 - Incorrect file path for several paths in the project [\#23](https://github.com/AtomLinter/linter-elixirc/issues/23)
 
 ## [v1.1.1](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.1) (2015-12-04)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.0...v1.1.1)
 
-**Closed issues:**
+**Implemented enhancements:**
 
 - Make mix optional [\#17](https://github.com/AtomLinter/linter-elixirc/issues/17)
 
-**Merged pull requests:**
+**Fixed bugs:**
 
 - Fix -pa command line arguments to work with test files. [\#22](https://github.com/AtomLinter/linter-elixirc/pull/22) ([tuvistavie](https://github.com/tuvistavie))
 
 ## [v1.1.0](https://github.com/AtomLinter/linter-elixirc/tree/v1.1.0) (2015-10-20)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.0.0...v1.1.0)
 
-**Closed issues:**
-
-- latest version of linter doesn't work [\#13](https://github.com/AtomLinter/linter-elixirc/issues/13)
-- use of non standard library module fails [\#12](https://github.com/AtomLinter/linter-elixirc/issues/12)
-- Object.activate is deprecated. [\#11](https://github.com/AtomLinter/linter-elixirc/issues/11)
-- Modules in `mix.exs` are not found by default. [\#10](https://github.com/AtomLinter/linter-elixirc/issues/10)
-- Some user defined modules are not found if includeDirs is not defined [\#9](https://github.com/AtomLinter/linter-elixirc/issues/9)
-- Upcoming linter changes [\#8](https://github.com/AtomLinter/linter-elixirc/issues/8)
-- Uncaught TypeError: Cannot read property 'split' of undefined [\#7](https://github.com/AtomLinter/linter-elixirc/issues/7)
-
-**Merged pull requests:**
+**Implemented enhancements:**
 
 - Handling exs [\#18](https://github.com/AtomLinter/linter-elixirc/pull/18) ([remiq](https://github.com/remiq))
 - New api doc [\#15](https://github.com/AtomLinter/linter-elixirc/pull/15) ([remiq](https://github.com/remiq))
 
+**Fixed bugs:**
+
+- Modules in `mix.exs` are not found by default. [\#10](https://github.com/AtomLinter/linter-elixirc/issues/10)
+- Upcoming linter changes [\#8](https://github.com/AtomLinter/linter-elixirc/issues/8)
+
 ## [v1.0.0](https://github.com/AtomLinter/linter-elixirc/tree/v1.0.0) (2015-10-19)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v0.2.2...v1.0.0)
 
-**Merged pull requests:**
+**Fixed bugs:**
 
 - New linter API [\#14](https://github.com/AtomLinter/linter-elixirc/pull/14) ([remiq](https://github.com/remiq))
 
 ## [v0.2.2](https://github.com/AtomLinter/linter-elixirc/tree/v0.2.2) (2015-05-27)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v0.2.1...v0.2.2)
 
-**Closed issues:**
+**Fixed bugs:**
 
-- Package.activateConfig is deprecated. [\#6](https://github.com/AtomLinter/linter-elixirc/issues/6)
-- Package.activateConfig is deprecated. [\#4](https://github.com/AtomLinter/linter-elixirc/issues/4)
 - Package.activateConfig is deprecated. [\#3](https://github.com/AtomLinter/linter-elixirc/issues/3)
 - Package.getActivationCommands is deprecated. [\#2](https://github.com/AtomLinter/linter-elixirc/issues/2)
 
 ## [v0.2.1](https://github.com/AtomLinter/linter-elixirc/tree/v0.2.1) (2014-11-04)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v0.2.0...v0.2.1)
 
-**Closed issues:**
+**Implemented enhancements:**
 
 - join us [\#1](https://github.com/AtomLinter/linter-elixirc/issues/1)
 
