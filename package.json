@@ -7,7 +7,25 @@
   "repository": "https://github.com/AtomLinter/linter-elixirc",
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">=1.4.0 <2.0.0"
+  },
+  "configSchema": {
+    "elixircPath": {
+      "type": "string",
+      "title": "Elixirc path",
+      "default": "elixirc"
+    },
+    "mixPath": {
+      "type": "string",
+      "title": "Mix path",
+      "default": "mix"
+    },
+    "forceElixirc": {
+      "type": "boolean",
+      "title": "Always use elixirc",
+      "description": "Activating this will force the plugin to never use `mix compile` and always use `elixirc`.",
+      "default": false
+    }
   },
   "providedServices": {
     "linter": {
@@ -22,6 +40,33 @@
   ],
   "dependencies": {
     "atom-linter": "^8.0.0",
-    "atom-package-deps": "^4.0.1"
+    "atom-package-deps": "^4.0.1",
+    "tmp": "^0.0.31"
+  },
+  "devDependencies": {
+    "eslint": "^3.13.0",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0"
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "rules": {
+      "global-require": "off",
+      "import/no-unresolved": [
+        "error",
+        {
+          "ignore": [
+            "atom"
+          ]
+        }
+      ]
+    },
+    "globals": {
+      "atom": true
+    },
+    "env": {
+      "node": true,
+      "browser": true
+    }
   }
 }
