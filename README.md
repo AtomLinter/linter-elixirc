@@ -40,6 +40,8 @@ Plugin should work with default settings. If not:
 
 5.  `always use elixirc` option - leave it disabled, unless `mix compile` is too slow.
 
+6.  `mix env` option - Allows changing the Mix environment for lint runs. If using IEx at the same time as Atom this can be changed to allow IEx to pick up code changes.
+
 ## Usage
 
 If you open folder with mix project (`mix.exs` exists in project's root
