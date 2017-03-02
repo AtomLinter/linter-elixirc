@@ -1,5 +1,13 @@
 # Change Log
 
+## [v1.3.0](https://github.com/AtomLinter/linter-elixirc/tree/v1.3.0) (2017-03-02)
+[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.2.0...v1.3.0)
+
+**Implemented enhancements:**
+
+- Include mixEnv parameter and apply to environment [\#84](https://github.com/AtomLinter/linter-elixirc/pull/84) ([mauricerkelly](https://github.com/mauricerkelly))
+- Add CircleCI support [\#83](https://github.com/AtomLinter/linter-elixirc/pull/83) ([Arcanemagus](https://github.com/Arcanemagus))
+
 ## [v1.2.0](https://github.com/AtomLinter/linter-elixirc/tree/v1.2.0) (2017-02-22)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.1.11...v1.2.0)
 
