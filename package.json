@@ -36,17 +36,17 @@
   "providedServices": {
     "linter": {
       "versions": {
-        "1.0.0": "provideLinter"
+        "2.0.0": "provideLinter"
       }
     }
   },
   "package-deps": [
-    "linter",
+    "linter:2.0.0",
     "language-elixir"
   ],
   "dependencies": {
     "atom-linter": "^9.0.0",
-    "atom-package-deps": "^4.0.1",
+    "atom-package-deps": "^4.5.0",
     "tmp": "^0.0.31"
   },
   "devDependencies": {

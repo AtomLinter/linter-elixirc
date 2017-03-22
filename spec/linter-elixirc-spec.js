@@ -25,11 +25,11 @@ describe('The elixirc provider for Linter', () => {
     waitsForPromise(() =>
       atom.workspace.open(errorMode1Path).then(editor => lint(editor)).then((messages) => {
         expect(messages.length).toBe(1);
-        expect(messages[0].type).toBe('Error');
+        expect(messages[0].severity).toBe('error');
         expect(messages[0].html).not.toBeDefined();
-        expect(messages[0].text).toBe('(ArgumentError) Dangerous is not available');
-        expect(messages[0].filePath).toBe(errorMode1Path);
-        expect(messages[0].range).toEqual([[1, 0], [1, 32]]);
+        expect(messages[0].excerpt).toBe('(ArgumentError) Dangerous is not available');
+        expect(messages[0].location.file).toBe(errorMode1Path);
+        expect(messages[0].location.position).toEqual([[1, 0], [1, 32]]);
       }),
     );
   });
@@ -38,11 +38,11 @@ describe('The elixirc provider for Linter', () => {
     waitsForPromise(() =>
       atom.workspace.open(errorMode2Path).then(editor => lint(editor)).then((messages) => {
         expect(messages.length).toBe(1);
-        expect(messages[0].type).toBe('Error');
+        expect(messages[0].severity).toBe('error');
         expect(messages[0].html).not.toBeDefined();
-        expect(messages[0].text).toBe('(CompileError) module Usefulness is not loaded and could not be found');
-        expect(messages[0].filePath).toBe(errorMode2Path);
-        expect(messages[0].range).toEqual([[3, 2], [3, 20]]);
+        expect(messages[0].excerpt).toBe('(CompileError) module Usefulness is not loaded and could not be found');
+        expect(messages[0].location.file).toBe(errorMode2Path);
+        expect(messages[0].location.position).toEqual([[3, 2], [3, 20]]);
       }),
     );
   });
@@ -51,11 +51,11 @@ describe('The elixirc provider for Linter', () => {
     waitsForPromise(() =>
       atom.workspace.open(warningPath).then(editor => lint(editor)).then((messages) => {
         expect(messages.length).toBe(1);
-        expect(messages[0].type).toBe('Warning');
+        expect(messages[0].severity).toBe('warning');
         expect(messages[0].html).not.toBeDefined();
-        expect(messages[0].text).toBe('variable "deps" does not exist and is being expanded to "deps()", please use parentheses to remove the ambiguity or change the variable name');
-        expect(messages[0].filePath).toBe(warningPath);
-        expect(messages[0].range).toEqual([[9, 5], [9, 16]]);
+        expect(messages[0].excerpt).toBe('variable "deps" does not exist and is being expanded to "deps()", please use parentheses to remove the ambiguity or change the variable name');
+        expect(messages[0].location.file).toBe(warningPath);
+        expect(messages[0].location.position).toEqual([[9, 5], [9, 16]]);
       }),
     );
   });
