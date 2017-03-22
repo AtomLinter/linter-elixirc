@@ -1,5 +1,12 @@
 # Change Log
 
+## [v1.4.0](https://github.com/AtomLinter/linter-elixirc/tree/v1.4.0) (2017-03-22)
+[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.3.0...v1.4.0)
+
+**Implemented enhancements:**
+
+- Update to use Linter v2 provider and message formats [\#85](https://github.com/AtomLinter/linter-elixirc/pull/85) ([mauricerkelly](https://github.com/mauricerkelly))
+
 ## [v1.3.0](https://github.com/AtomLinter/linter-elixirc/tree/v1.3.0) (2017-03-02)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.2.0...v1.3.0)
 
