@@ -1,5 +1,13 @@
 # Change Log
 
+## [v1.5.0](https://github.com/AtomLinter/linter-elixirc/tree/v1.5.0) (2017-04-17)
+[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.4.0...v1.5.0)
+
+**Implemented enhancements:**
+
+- Update atom-linter to the latest version 🚀 [\#87](https://github.com/AtomLinter/linter-elixirc/pull/87) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Account for umbrella projects when determining project path [\#86](https://github.com/AtomLinter/linter-elixirc/pull/86) ([mauricerkelly](https://github.com/mauricerkelly))
+
 ## [v1.4.0](https://github.com/AtomLinter/linter-elixirc/tree/v1.4.0) (2017-03-22)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.3.0...v1.4.0)
 
