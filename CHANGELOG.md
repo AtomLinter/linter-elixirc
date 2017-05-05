@@ -1,5 +1,17 @@
 # Change Log
 
+## [v1.6.0](https://github.com/AtomLinter/linter-elixirc/tree/v1.6.0) (2017-05-05)
+[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.5.0...v1.6.0)
+
+**Implemented enhancements:**
+
+- Expand and tidy the README [\#89](https://github.com/AtomLinter/linter-elixirc/pull/89) ([mauricerkellu](https://github.com/mauricerkelly))
+
+**Fixed bugs:**
+
+- Fix absolute vs relative path issues [\#92](https://github.com/AtomLinter/linter-elixirc/pull/92) ([mauricerkellu](https://github.com/mauricerkelly))
+- Await the result of isUmbrellaProject() [\#91](https://github.com/AtomLinter/linter-elixirc/pull/91) ([mauricerkelly](https://github.com/mauricerkelly))
+
 ## [v1.5.0](https://github.com/AtomLinter/linter-elixirc/tree/v1.5.0) (2017-04-17)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.4.0...v1.5.0)
 
