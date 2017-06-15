@@ -18,11 +18,16 @@ defmodule Proj do
   end
 
   def handle_call({:get, key}, _caller, state) do
+    prepare_for_call
     {:reply, Map.get(state, key), state}
   end
 
   def handle_cast({:put, key, val}, state) do
     {:noreply, Map.put(state, key, val), state}
+  end
+
+  def prepare_for_call() do
+    :ok
   end
 
 end
