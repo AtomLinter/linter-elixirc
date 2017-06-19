@@ -10,9 +10,6 @@ const errorMode1PathElixirc = join(__dirname, 'fixtures', 'elixirc', 'error-mode
 const errorMode2PathElixirc = join(__dirname, 'fixtures', 'elixirc', 'error-mode2.ex');
 const exsFilePathElixirc = join(__dirname, 'fixtures', 'elixirc', 'script.exs');
 
-const validPathMix = join(__dirname, 'fixtures', 'mix-proj', 'lib', 'valid.ex');
-const warningPathMix = join(__dirname, 'fixtures', 'mix-proj', 'lib', 'warning.ex');
-const errorMode1PathMix = join(__dirname, 'fixtures', 'mix-proj', 'lib', 'error-mode1.ex');
 const errorMode2PathMix = join(__dirname, 'fixtures', 'mix-proj', 'lib', 'error-mode2.ex');
 const exsFilePathMix = join(__dirname, 'fixtures', 'mix-proj', 'lib', 'script.exs');
 
