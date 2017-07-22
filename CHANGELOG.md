@@ -1,5 +1,14 @@
 # Change Log
 
+## [v1.7.0](https://github.com/AtomLinter/linter-elixirc/tree/v1.7.0) (2017-07-22)
+[Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.6.0...v1.7.0)
+
+**Implemented enhancements:**
+
+- Improve unit testing [\#95](https://github.com/AtomLinter/linter-elixirc/pull/95) ([mauricerkellu](https://github.com/mauricerkelly))
+- Update fs-extra to the latest version [\#97](https://github.com/AtomLinter/linter-elixirc/pull/97) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Force elixirc for umbrella projects [\#98](https://github.com/AtomLinter/linter-elixirc/pull/98) ([mauricerkellu](https://github.com/mauricerkelly))
+
 ## [v1.6.0](https://github.com/AtomLinter/linter-elixirc/tree/v1.6.0) (2017-05-05)
 [Full Changelog](https://github.com/AtomLinter/linter-elixirc/compare/v1.5.0...v1.6.0)
 
