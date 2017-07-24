@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "eslint": "^4.3.0",
-    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-config-airbnb-base": "^11.3.1",
     "eslint-plugin-import": "^2.2.0",
     "fs-extra": "^4.0.1"
   },
