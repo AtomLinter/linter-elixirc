@@ -1,7 +1,7 @@
 'use babel';
 
 import { join } from 'path';
-// eslint-disable-next-line import/no-extraneous-dependencies
+// eslint-disable-next-line import/no-extraneous-dependencies, import/no-unresolved
 import { remove } from 'fs-extra';
 
 const validPathElixirc = join(__dirname, 'fixtures', 'elixirc', 'valid.ex');
@@ -37,13 +37,13 @@ describe('The elixirc provider for Linter', () => {
         waitsForPromise(() =>
           atom.workspace.open(errorMode1PathElixirc).then(editor =>
             lint(editor)).then((messages) => {
-              expect(messages.length).toBe(1);
-              expect(messages[0].severity).toBe('error');
-              expect(messages[0].html).not.toBeDefined();
-              expect(messages[0].excerpt).toBe('(ArgumentError) Dangerous is not available');
-              expect(messages[0].location.file).toBe(errorMode1PathElixirc);
-              expect(messages[0].location.position).toEqual([[1, 0], [1, 32]]);
-            }),
+            expect(messages.length).toBe(1);
+            expect(messages[0].severity).toBe('error');
+            expect(messages[0].html).not.toBeDefined();
+            expect(messages[0].excerpt).toBe('(ArgumentError) Dangerous is not available');
+            expect(messages[0].location.file).toBe(errorMode1PathElixirc);
+            expect(messages[0].location.position).toEqual([[1, 0], [1, 32]]);
+          }),
         );
       });
 
@@ -51,13 +51,13 @@ describe('The elixirc provider for Linter', () => {
         waitsForPromise(() =>
           atom.workspace.open(errorMode2PathElixirc).then(editor =>
             lint(editor)).then((messages) => {
-              expect(messages.length).toBe(1);
-              expect(messages[0].severity).toBe('error');
-              expect(messages[0].html).not.toBeDefined();
-              expect(messages[0].excerpt).toBe('(CompileError) module Usefulness is not loaded and could not be found');
-              expect(messages[0].location.file).toBe(errorMode2PathElixirc);
-              expect(messages[0].location.position).toEqual([[3, 2], [3, 20]]);
-            }),
+            expect(messages.length).toBe(1);
+            expect(messages[0].severity).toBe('error');
+            expect(messages[0].html).not.toBeDefined();
+            expect(messages[0].excerpt).toBe('(CompileError) module Usefulness is not loaded and could not be found');
+            expect(messages[0].location.file).toBe(errorMode2PathElixirc);
+            expect(messages[0].location.position).toEqual([[3, 2], [3, 20]]);
+          }),
         );
       });
 
@@ -117,13 +117,13 @@ describe('The elixirc provider for Linter', () => {
         waitsForPromise(() =>
           atom.workspace.open(errorMode2PathMix).then(editor =>
             lint(editor)).then((messages) => {
-              expect(messages.length).toBe(1);
-              expect(messages[0].severity).toBe('error');
-              expect(messages[0].html).not.toBeDefined();
-              expect(messages[0].excerpt).toBe('(CompileError) Identicon.Image.__struct__/1 is undefined, cannot expand struct Identicon.Image');
-              expect(messages[0].location.file).toBe(errorMode2PathMix);
-              expect(messages[0].location.position).toEqual([[11, 4], [11, 30]]);
-            }),
+            expect(messages.length).toBe(1);
+            expect(messages[0].severity).toBe('error');
+            expect(messages[0].html).not.toBeDefined();
+            expect(messages[0].excerpt).toBe('(CompileError) Identicon.Image.__struct__/1 is undefined, cannot expand struct Identicon.Image');
+            expect(messages[0].location.file).toBe(errorMode2PathMix);
+            expect(messages[0].location.position).toEqual([[11, 4], [11, 30]]);
+          }),
         );
       });
 
