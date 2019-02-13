@@ -1,6 +1,7 @@
 {
   "name": "linter-elixirc",
   "version": "1.7.0",
+  "private": true,
   "main": "./lib/init",
   "description": "Bare Minimum Elixir lint package",
   "repository": "https://github.com/AtomLinter/linter-elixirc",
