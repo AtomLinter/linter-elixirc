@@ -2,8 +2,10 @@
 
 import { join } from 'path';
 import { remove } from 'fs-extra';
-// eslint-disable-next-line no-unused-vars
-import { it, fit, wait, beforeEach, afterEach } from 'jasmine-fix';
+import {
+  // eslint-disable-next-line no-unused-vars
+  it, fit, wait, beforeEach, afterEach,
+} from 'jasmine-fix';
 
 const { lint } = require('../lib/init.js').provideLinter();
 
